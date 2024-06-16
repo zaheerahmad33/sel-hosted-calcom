@@ -1,0 +1,29 @@
+name: Deploy Calcom Stack
+on:
+  workflow_dispatch:
+jobs:
+  calcom-stack:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Rsync Deployments
+      uses: burnett01/rsync-deployments@7.0.1
+      with:
+        switches: -avzr --delete
+        remote_path: /home/ubuntu/calcom
+        remote_host: ${{ secrets.REMOTE_HOST }}
+        remote_user: ${{ secrets.REMOTE_USER }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: Run Docker Script
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+           git clone --recursive https://github.com/calcom/docker.git calcom-docker
+    
