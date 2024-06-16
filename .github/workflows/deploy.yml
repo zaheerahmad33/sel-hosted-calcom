@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: Dev
 
     steps:
       # Step 1: SSH to the remote server and install Docker
