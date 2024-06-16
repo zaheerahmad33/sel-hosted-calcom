@@ -8,13 +8,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: Dev
-
     steps:
       - uses: actions/checkout@v4
 
       - uses: webfactory/ssh-agent@v0.9.0
-              with:
-                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: SSH into server and execute script
         run: |
