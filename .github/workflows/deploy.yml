@@ -27,6 +27,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+           sudo docker network create stack
            chmod +x /home/ubuntu/calcom/scripts/deploy.sh
            bash /home/ubuntu/calcom/scripts/deploy.sh
     
