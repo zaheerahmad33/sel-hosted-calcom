@@ -15,8 +15,7 @@ jobs:
       uses: burnett01/rsync-deployments@7.0.1
       with:
         switches: -avzr --delete
-        remote_path: /home/ubuntu
+        remote_path: /home/ubuntu/calcom
         remote_host: ${{ secrets.REMOTE_HOST }}
-        #remote_port: ${{ secrets.DEPLOY_PORT }}
         remote_user: ${{ secrets.REMOTE_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
