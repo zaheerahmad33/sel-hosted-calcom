@@ -26,5 +26,5 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: ./home/ubuntu/calcom/scripts/deploy.sh
+          script: bash ./home/ubuntu/calcom/scripts/deploy.sh
     
