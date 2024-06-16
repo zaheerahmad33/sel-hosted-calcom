@@ -38,6 +38,7 @@ jobs:
            cat .env
            cd ..
            cp ~/calcom/docker-compose.yaml calcom-docker/docker-compose.yaml
+           cd calcom-docker && sudo docker compose up
           
 
 
