@@ -17,6 +17,6 @@ jobs:
         switches: -avzr --delete
         remote_path: /home/ubuntu
         remote_host: ${{ secrets.REMOTE_HOST }}
-        remote_port: ${{ secrets.DEPLOY_PORT }}
+        #remote_port: ${{ secrets.DEPLOY_PORT }}
         remote_user: ${{ secrets.REMOTE_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
