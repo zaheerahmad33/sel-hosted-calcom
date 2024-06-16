@@ -22,4 +22,8 @@ jobs:
             curl -o- https://get.docker.com | bash -
             docker --version
             docker compose version
+            git clone https://github.com/zaheerahmad33/sel-hosted-calcom.git
+            cd sel-hosted-calcom/nginx-proxy 
+            sudo docker compose up
+
 
