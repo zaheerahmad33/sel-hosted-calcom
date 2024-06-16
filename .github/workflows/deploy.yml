@@ -10,12 +10,11 @@ jobs:
 
     steps:
       # Step 1: SSH to the remote server and install Docker
-      - name: SSH to remote server and install Docker
-        uses: appleboy/ssh-action@master
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            # Install Docker using curl -o- get.docker.com | bash
-            curl -fsSL https://get.docker.com | bash -
+          port: ${{ secrets.PORT }}
+          script: whoami
