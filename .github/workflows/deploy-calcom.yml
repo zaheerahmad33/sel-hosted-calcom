@@ -28,9 +28,14 @@ jobs:
            rm -rf calcom-docker
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
            cd calcom-docker && git submodule update --remote --init
+           mv .env.example .env
+           sed -i "s/^CALENDSO_ENCRYPTION_KEY=.*/CALENDSO_ENCRYPTION_KEY=${{secrets.CALENDSO_ENCRYPTION_KEY}}/" .env
+           sed -i "s/^NEXTAUTH_SECRET=.*/NEXTAUTH_SECRET=${{secrets.NEXTAUTH_SECRET}}/" .env
+           cat .env
            cd ..
            cp ~/calcom/docker-compose.yaml calcom-docker/docker-compose.yaml
-           cat calcom-docker/docker-compose.yaml
+          
+
 
            
 
