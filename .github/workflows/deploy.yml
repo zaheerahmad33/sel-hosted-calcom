@@ -10,23 +10,27 @@ jobs:
     environment: Dev
 
     steps:
-      # Step 1: SSH to the remote server and install Docker
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.3
+      - uses: actions/checkout@v4
+
+      - uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-          script: |
-            #curl -o- https://get.docker.com | bash -
-            #docker --version
-            #docker compose version
-            rm -rf sel-hosted-calcom
-            git clone https://github.com/zaheerahmad33/sel-hosted-calcom.git
-            cd sel-hosted-calcom/nginx-proxy 
-            sudo docker compose down
-            sudo docker compose up
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: SSH into server and execute script
+        run: |
+         ssh -o StrictHostKeyChecking=no ubuntu@34.239.249.201 'bash -s' < deploy_script.sh
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      # - name: executing remote ssh commands using ssh key
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.REMOTE_HOST }}
+      #     username: ${{ secrets.REMOTE_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
             
+
 
 
