@@ -10,7 +10,7 @@ jobs:
     environment: Dev
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: rsync deployments
       uses: burnett01/rsync-deployments@7.0.1
       with:
