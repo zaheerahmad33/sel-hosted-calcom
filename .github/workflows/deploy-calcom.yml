@@ -18,7 +18,7 @@ jobs:
         remote_user: ${{ secrets.REMOTE_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
     
-    - name: Run Docker Script
+    - name: Deploy Calcom Stack
       uses: appleboy/ssh-action@v1.0.3
       with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -28,6 +28,8 @@ jobs:
            rm -rf calcom-docker
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
            cd calcom-docker && git submodule update --remote --init
+           cp ~/calcom/docker-compose.yaml calcom-docker/
+           cat calcom-docker/docker-compose.yaml
 
            
 
