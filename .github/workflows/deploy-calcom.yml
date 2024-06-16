@@ -27,8 +27,8 @@ jobs:
           script: |
            rm -rf calcom-docker
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
-           cd calcom-docker
-           git submodule update --remote --init
+           cd calcom-docker && git submodule update --remote --init
 
+           
 
     
