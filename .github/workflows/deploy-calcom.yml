@@ -28,7 +28,8 @@ jobs:
            rm -rf calcom-docker
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
            cd calcom-docker && git submodule update --remote --init
-           cp ~/calcom/docker-compose.yaml calcom-docker/
+           cd ..
+           cp ~/calcom/docker-compose.yaml calcom-docker/docker-compose.yaml
            cat calcom-docker/docker-compose.yaml
 
            
