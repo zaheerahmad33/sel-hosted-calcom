@@ -1,18 +1,17 @@
-name: Deploy to Remote Server
+name: Deploy Nginx Proxy Stack
 
 on:
-  push:
-    branches:
-      - main  # Define the branch to trigger the workflow
+  workflow_dispatch:
 jobs:
-  deploy:
+  nginx-proxy-stack:
+  
     runs-on: ubuntu-latest
     environment: Dev
     steps:
     - name: checkout
       uses: actions/checkout@v4
 
-    - name: rsync deployments
+    - name: Rsync Deployments
       uses: burnett01/rsync-deployments@7.0.1
       with:
         switches: -avzr --delete
@@ -20,7 +19,8 @@ jobs:
         remote_host: ${{ secrets.REMOTE_HOST }}
         remote_user: ${{ secrets.REMOTE_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-    - name: executing remote ssh commands using password
+    
+    - name: Run Docker Script
       uses: appleboy/ssh-action@v1.0.3
       with:
           host: ${{ secrets.REMOTE_HOST }}
