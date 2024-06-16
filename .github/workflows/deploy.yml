@@ -17,17 +17,13 @@ jobs:
 
       - name: SSH into server and execute script
         run: |
+         chmod +x ./scripts/deploy.sh
+         cat ./scripts/deploy.sh
          ssh -o StrictHostKeyChecking=no ubuntu@34.239.249.201 'bash -s' < ./scripts/deploy.sh
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Execute local script
-        uses: appleboy/ssh-action@master
-        with:
-          host: 34.239.249.201
-          username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script-file: ./scripts/deploy.sh
+      
 
       # - name: executing remote ssh commands using ssh key
       #   uses: appleboy/ssh-action@v1.0.3
