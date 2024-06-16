@@ -26,4 +26,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
+           cd calcom-docker
+           git submodule update --remote --init
+
+
     
