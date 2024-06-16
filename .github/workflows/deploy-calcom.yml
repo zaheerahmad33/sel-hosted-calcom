@@ -38,7 +38,10 @@ jobs:
            cat .env
            cd ..
            cp ~/calcom/docker-compose.yaml calcom-docker/docker-compose.yaml
-           cd calcom-docker && sudo docker compose up
+           cd calcom-docker
+           echo "Stopping and removing existing docker-compose containers..."
+           sudo docker compose down || true  # Continue on error (if no containers are running)
+           sudo docker compose up --build
           
 
 
