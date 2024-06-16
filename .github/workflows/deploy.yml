@@ -27,5 +27,6 @@ jobs:
             cd sel-hosted-calcom/nginx-proxy 
             sudo docker compose down
             sudo docker compose up
+            
 
 
