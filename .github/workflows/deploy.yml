@@ -20,7 +20,7 @@ jobs:
          chmod +x ./scripts/deploy.sh
          cat ./scripts/deploy.sh
          ls -al
-         ssh -o StrictHostKeyChecking=no ubuntu@34.239.249.201 'bash -s' < ./scripts/deploy.sh
+         ssh -o StrictHostKeyChecking=no ubuntu@34.239.249.201 'bash -s' < scripts/deploy.sh
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
