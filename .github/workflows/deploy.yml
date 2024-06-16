@@ -13,15 +13,7 @@ jobs:
       - uses: webfactory/ssh-agent@v0.9.0
         with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - uses: docker-practice/actions-setup-docker@master
         timeout-minutes: 12
-      - run: |
-        set -x
-
-        docker version
-
-        docker run --rm hello-world
       
-
-
-
