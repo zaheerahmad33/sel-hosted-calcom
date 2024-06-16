@@ -24,6 +24,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 200m
           script: |
            rm -rf calcom-docker
            git clone --recursive https://github.com/calcom/docker.git calcom-docker
