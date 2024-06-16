@@ -18,4 +18,8 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          script: ls -al
+          script: |
+            curl -o- https://get.docker.com | bash -
+            docker --version
+            docker compose --version
+
