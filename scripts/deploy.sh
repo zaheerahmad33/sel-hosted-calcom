@@ -15,7 +15,7 @@ docker --version
 docker compose version
 
 cd calcom/nginx-proxy
-sudo docker network create
+sudo docker network create stack
 
 echo "Stopping and removing existing docker-compose containers..."
 sudo docker compose down || true  # Continue on error (if no containers are running)
