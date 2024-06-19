@@ -35,7 +35,6 @@ fi
 
 
 cd calcom/nginx-proxy
-docker network create stack
 
 echo "Stopping and removing existing docker-compose containers..."
 docker compose down || true  # Continue on error (if no containers are running)
