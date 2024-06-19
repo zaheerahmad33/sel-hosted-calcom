@@ -29,5 +29,5 @@ jobs:
           script: |
            sudo docker network create stack
            chmod +x /home/ubuntu/calcom/scripts/deploy.sh
-           bash /home/ubuntu/calcom/scripts/deploy.sh
+           sudo bash /home/ubuntu/calcom/scripts/deploy.sh
     
